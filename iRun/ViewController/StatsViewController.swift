@@ -9,8 +9,8 @@
 import UIKit
 import CoreData
 
-class StatsViewController: ViewController {
-
+class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
