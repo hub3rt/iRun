@@ -108,12 +108,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUT-dn-SH5">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUT-dn1-SH5">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="cP2-QT-Psr"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="dataSource" destination="5F8-eb-SNf" id="t0s-g0-Mlq"/>
+                                    <outlet property="dataSource" destination="5F8-eb-SNf" id="t0s1-g0-Mlq"/>
                                     <outlet property="delegate" destination="5F8-eb-SNf" id="Kee-EV-TIK"/>
                                 </connections>
                             </pickerView>
@@ -124,6 +124,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="DISTANCE"/>
+                                <connections>
+                                    <action selector="selectDist:" destination="5F8-eb-SNf" eventType="touchUpInside" id="WWR-AW-DIB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-Oh-9Z4">
                                 <constraints>
@@ -132,6 +135,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="TEMPS"/>
+                                <connections>
+                                    <action selector="selectTemps:" destination="5F8-eb-SNf" eventType="touchUpInside" id="xnW-2g-3Ay"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikF-ab-2kd">
                                 <constraints>
@@ -199,6 +205,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSt-8b-kxe">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUT-dn-SH5">
+                                <rect key="frame" x="177" y="50" width="182" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="cP21-QT-Psr"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="5F8-eb-SNf" id="t0s-g0-Mlq"/>
+                                    <outlet property="delegate" destination="5F8-eb-SNf" id="Kee-EV1-TIK"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -207,13 +223,12 @@
                             <constraint firstItem="caq-Ye-mgp" firstAttribute="top" secondItem="Kit-Ct-DDj" secondAttribute="bottom" constant="24" id="8o4-rI-uXg"/>
                             <constraint firstItem="Sex-WE-mh4" firstAttribute="centerY" secondItem="ikF-ab-2kd" secondAttribute="centerY" id="DdG-Ao-LZS"/>
                             <constraint firstItem="jSt-8b-kxe" firstAttribute="leading" secondItem="ptu-hU-rFX" secondAttribute="leadingMargin" id="E3Q-xO-QDF"/>
-                            <constraint firstItem="TMb-4z-H3n" firstAttribute="top" secondItem="tUT-dn-SH5" secondAttribute="bottom" constant="15" id="GsA-hf-WtJ"/>
                             <constraint firstItem="jvi-Oh-9Z4" firstAttribute="top" secondItem="M0Q-UL-CYP" secondAttribute="bottom" constant="23" id="GtM-hy-hmo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nuG-Rq-QmK" secondAttribute="trailing" constant="20" id="Hqq-3S-390"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TMb-4z-H3n" secondAttribute="trailing" constant="52" id="IRq-lu-FQe"/>
                             <constraint firstItem="yPE-vz-Wni" firstAttribute="top" secondItem="caq-Ye-mgp" secondAttribute="bottom" constant="20" id="IwS-4R-kc1"/>
                             <constraint firstItem="Kit-Ct-DDj" firstAttribute="centerY" secondItem="ry2-5i-e8g" secondAttribute="centerY" id="KR5-EI-l0n"/>
-                            <constraint firstItem="tUT-dn-SH5" firstAttribute="top" secondItem="m86-eS-4w0" secondAttribute="bottom" constant="43" id="NtA-4t-i9d"/>
+                            <constraint firstItem="tUT-dn-SH5" firstAttribute="top" secondItem="m86-eS-4w0" secondAttribute="bottom" constant="30" id="NtA-4t-i9d"/>
                             <constraint firstItem="caq-Ye-mgp" firstAttribute="centerX" secondItem="ptu-hU-rFX" secondAttribute="centerX" id="Q8L-Fr-8DV"/>
                             <constraint firstItem="jSt-8b-kxe" firstAttribute="top" secondItem="jvi-Oh-9Z4" secondAttribute="bottom" constant="8" id="SNd-9X-OUz"/>
                             <constraint firstItem="tUT-dn-SH5" firstAttribute="leading" secondItem="M0Q-UL-CYP" secondAttribute="trailing" constant="1" id="Y1O-fX-RUr"/>
@@ -237,6 +252,12 @@
                             <constraint firstItem="UEM-Jh-Od3" firstAttribute="top" secondItem="jSt-8b-kxe" secondAttribute="bottom" constant="16" id="ztu-JU-6Q9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="distanceLabel" destination="Kit-Ct-DDj" id="TOl-6E-ekF"/>
+                        <outlet property="statsView" destination="jSt-8b-kxe" id="a1N-W3-zvL"/>
+                        <outlet property="tempsLabel" destination="ry2-5i-e8g" id="qU5-ym-8iE"/>
+                        <outlet property="vitesseLabel" destination="pdr-j6-epw" id="SPf-z0-LaA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o8Z-Gf-QJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
