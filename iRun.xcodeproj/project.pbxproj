@@ -14,6 +14,10 @@
 		8B85D8381E7ACEC200795E25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B85D8371E7ACEC200795E25 /* Assets.xcassets */; };
 		8B85D83B1E7ACEC200795E25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B85D8391E7ACEC200795E25 /* LaunchScreen.storyboard */; };
 		8B85D8441E7AD5AD00795E25 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B85D8431E7AD5AD00795E25 /* MapKit.framework */; };
+		8B85D8461E7AE4D500795E25 /* AccueilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B85D8451E7AE4D500795E25 /* AccueilViewController.swift */; };
+		8B85D8481E7AE4F400795E25 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B85D8471E7AE4F400795E25 /* StatsViewController.swift */; };
+		8B85D84A1E7AE51500795E25 /* ParamCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B85D8491E7AE51500795E25 /* ParamCourseViewController.swift */; };
+		8B85D84C1E7AE52400795E25 /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B85D84B1E7AE52400795E25 /* CourseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		8B85D83A1E7ACEC200795E25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B85D83C1E7ACEC200795E25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B85D8431E7AD5AD00795E25 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8B85D8451E7AE4D500795E25 /* AccueilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccueilViewController.swift; path = ViewController/AccueilViewController.swift; sourceTree = "<group>"; };
+		8B85D8471E7AE4F400795E25 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatsViewController.swift; path = ViewController/StatsViewController.swift; sourceTree = "<group>"; };
+		8B85D8491E7AE51500795E25 /* ParamCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParamCourseViewController.swift; path = ViewController/ParamCourseViewController.swift; sourceTree = "<group>"; };
+		8B85D84B1E7AE52400795E25 /* CourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseViewController.swift; path = ViewController/CourseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +75,10 @@
 				8B85D8391E7ACEC200795E25 /* LaunchScreen.storyboard */,
 				8B85D83C1E7ACEC200795E25 /* Info.plist */,
 				8B85D8341E7ACEC200795E25 /* iRun.xcdatamodeld */,
+				8B85D8451E7AE4D500795E25 /* AccueilViewController.swift */,
+				8B85D8471E7AE4F400795E25 /* StatsViewController.swift */,
+				8B85D8491E7AE51500795E25 /* ParamCourseViewController.swift */,
+				8B85D84B1E7AE52400795E25 /* CourseViewController.swift */,
 			);
 			path = iRun;
 			sourceTree = "<group>";
@@ -159,6 +171,10 @@
 				8B85D8361E7ACEC200795E25 /* iRun.xcdatamodeld in Sources */,
 				8B85D8301E7ACEC100795E25 /* ViewController.swift in Sources */,
 				8B85D82E1E7ACEC100795E25 /* AppDelegate.swift in Sources */,
+				8B85D84A1E7AE51500795E25 /* ParamCourseViewController.swift in Sources */,
+				8B85D8481E7AE4F400795E25 /* StatsViewController.swift in Sources */,
+				8B85D8461E7AE4D500795E25 /* AccueilViewController.swift in Sources */,
+				8B85D84C1E7AE52400795E25 /* CourseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
