@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Course" representedClassName="Course" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="duree" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
+        <attribute name="vitesse" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="type" maxCount="1" deletionRule="Nullify" destinationEntity="TypeDeCourse" inverseName="courses" inverseEntity="TypeDeCourse" syncable="YES"/>
+    </entity>
+    <entity name="TypeDeCourse" representedClassName="TypeDeCourse" syncable="YES" codeGenerationType="class">
+        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="courses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="type" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TypeDeCourse" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="Course" positionX="-54" positionY="-9" width="128" height="120"/>
+    </elements>
 </model>
