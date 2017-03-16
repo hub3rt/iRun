@@ -15,9 +15,9 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let marches = retrieveCoursesFor(_typeDeCourse: "marche")
+        let courses = retrieveCoursesFor(_typeDeCourse: retrieveTypesDeCourse()![0])
         
-        print("\(marches!.count)")
+        print("\(courses!.count)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +42,35 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
             print("Error with request: \(error)")
         }
         return nil
+    }
+    
+    func retrieveTypesDeCourse () -> Array<String>? {
+        if let path = Bundle.main.path(forResource: "typesDeCourses", ofType: "plist") {
+            if let dic = NSDictionary(contentsOfFile: path) as? [String: Any] {
+                if let types = dic["typesDeCourse"] as? Array<String> {
+                    return types
+                }
+            }
+        }
+        return nil
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return retrieveTypesDeCourse()!.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return retrieveTypesDeCourse()![row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let courses = retrieveCoursesFor(_typeDeCourse: retrieveTypesDeCourse()![row])
+        
+        print("\(courses!.count)")
     }
 
 }
