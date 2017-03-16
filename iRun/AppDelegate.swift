@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setTypesDeCourse()
+        
         return true
     }
 
@@ -86,6 +88,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        }
+    }
+    
+    func getContext () -> NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
+    func setTypesDeCourse () {
+        let context = getContext()
+        
+        let fetchRequest: NSFetchRequest<TypeDeCourse> = TypeDeCourse.fetchRequest()
+        
+        do {
+            let result = try getContext().fetch(fetchRequest)
+            
+            if let path = Bundle.main.path(forResource: "typesDeCourses", ofType: "plist") {
+                if let dic = NSDictionary(contentsOfFile: path) as? [String: Any] {
+                    if let types = dic["typesDeCourse"] as? Array<String> {
+                        
+                        for object in result {
+                            context.delete(object)
+                        }
+                        
+                        for typeDeCourse : String in types {
+                            let newTypeDeCourse = TypeDeCourse(context: context)
+                            newTypeDeCourse.nom = typeDeCourse
+                        }
+                        
+                        do {
+                            try context.save()
+                            print("saved!")
+                        } catch let error as NSError {
+                            print("Could not save \(error), \(error.userInfo)")
+                        } catch {
+                            
+                        }
+                    }
+                }
+            }
+        } catch {
+            print("Error with request: \(error)")
         }
     }
 

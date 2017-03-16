@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class StatsViewController: ViewController {
 
@@ -14,6 +15,9 @@ class StatsViewController: ViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let marches = retrieveCoursesFor(_typeDeCourse: "marche")
+        
+        print("\(marches!.count)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +25,23 @@ class StatsViewController: ViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
     }
-    */
+    
+    func retrieveCoursesFor (_typeDeCourse: String) -> NSSet? {
+        let fetchRequest: NSFetchRequest<TypeDeCourse> = TypeDeCourse.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "nom == %@", _typeDeCourse)
+        
+        do {
+            let result = try getContext().fetch(fetchRequest).first! as TypeDeCourse
+            
+            return result.courses
+        } catch {
+            print("Error with request: \(error)")
+        }
+        return nil
+    }
 
 }
