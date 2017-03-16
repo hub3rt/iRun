@@ -31,5 +31,28 @@ class CourseViewController: ViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBOutlet weak var stopBtn: UIButton!
+    
+    @IBAction func onClickStopBtn(_ sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "Fin de course", message: "Voulez-vous arrêter votre course ?", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let cancelAction = UIAlertAction(title: "Fin de course", style: UIAlertActionStyle.cancel) {
+            (result : UIAlertAction) -> Void in
+            print("Destructive")
+        }
+        
+        // Replace UIAlertActionStyle.Default by UIAlertActionStyle.default
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            (result : UIAlertAction) -> Void in
+            print("OK")
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
 }
