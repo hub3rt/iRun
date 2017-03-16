@@ -11,18 +11,42 @@ import CoreData
 
 class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    private var askingDist = false, askingTemps = true
+    
+    @IBOutlet weak var tempsLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var vitesseLabel: UILabel!
+    
+    @IBOutlet weak var statsView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
         let courses = retrieveCoursesFor(_typeDeCourse: retrieveTypesDeCourse()![0])
         
         print("\(courses!.count)")
+        
+        draw()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func selectTemps(_ sender: Any) {
+        if (askingTemps == false) {
+            draw()
+        }
+        askingTemps = true
+        askingDist = false
+    }
+    
+    @IBAction func selectDist(_ sender: Any) {
+        if (askingDist == false) {
+            draw()
+        }
+        askingDist = true
+        askingTemps = false
+    }
+    
+    func draw () {
+        print("Draw")
     }
     
     func getContext () -> NSManagedObjectContext {
