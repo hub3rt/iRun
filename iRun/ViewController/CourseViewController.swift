@@ -18,6 +18,9 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     public var isVoiceActive = false
     private var locations:[CLLocationCoordinate2D] = []
+    private var timer = Timer()
+    @IBOutlet weak var chronoLabel: UILabel!
+    private var counterTime = 0
     
     override func viewDidLoad() {
 
@@ -35,6 +38,11 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
             centerMapOnLocation(location: locationManager.location!)
             mapView.addAnnotation(pinLocation)
         }
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(CourseViewController.updateCounter), userInfo: nil, repeats: false)
+        
+        chronoLabel.text = String(counterTime)
+        
     }
     
     
@@ -55,7 +63,12 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
         let polyline = MKPolyline(coordinates: &locations, count: locations.count)
         mapView?.add(polyline)
     }
-
+    
+    func updateCounter(){
+        counterTime += 1
+        chronoLabel.text = String(counterTime)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
