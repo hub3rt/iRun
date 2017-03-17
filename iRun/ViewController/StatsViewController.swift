@@ -80,8 +80,6 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
         let mh = Int((vitesse - Double(kmh)) * 100.0)
         
         vitesseLabel.text = "\(kmh),\(mh < 10 ? "0\(mh)" : String(mh)) km/h"
-        
-        print("\(courses!.count)")
     }
     
     func getContext () -> NSManagedObjectContext {

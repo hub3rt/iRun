@@ -527,6 +527,7 @@
                     </view>
                     <connections>
                         <outlet property="stopBtn" destination="lWY-Lt-KgS" id="IFd-dW-XGn"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="backToHome" id="11H-gs-QmO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjW-pW-QNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -535,6 +536,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="80l-Vd-3re"/>
+        <segue reference="11H-gs-QmO"/>
     </inferredMetricsTieBreakers>
 </document>

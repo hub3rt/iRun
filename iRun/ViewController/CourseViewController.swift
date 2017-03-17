@@ -47,6 +47,7 @@ class CourseViewController: ViewController {
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
             (result : UIAlertAction) -> Void in
             print("OK")
+            self.performSegue(withIdentifier: "backToHome", sender: self)
         }
         
         alertController.addAction(cancelAction)
