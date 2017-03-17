@@ -24,10 +24,15 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         locationManager.delegate = 	self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
         locationManager.startMonitoringSignificantLocationChanges()
         
-        mapView.centerCoordinate = CLLocationCoordinate2DMake(kLatitude, kLongitude)
+        
+        // Check if the user allowed authorization
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways		)
+        {
+            centerMapOnLocation(location: locationManager.location!)
+        }
     }
     
     
@@ -35,7 +40,14 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
         let userLocation:CLLocation = locations[0]
         kLongitude = Double(userLocation.coordinate.longitude);
         kLatitude = Double(userLocation.coordinate.latitude);
-        mapView.centerCoordinate = CLLocationCoordinate2DMake(kLatitude, kLongitude)
+        centerMapOnLocation(location: locationManager.location!)
+    }
+    
+    let regionRadius: CLLocationDistance = 1000
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
