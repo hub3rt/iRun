@@ -25,7 +25,7 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
         locationManager.delegate = 	self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-        locationManager.startMonitoringSignificantLocationChanges()
+        locationManager.startUpdatingLocation()
         
         
         // Check if the user allowed authorization
@@ -37,16 +37,13 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation:CLLocation = locations[0]
-        kLongitude = Double(userLocation.coordinate.longitude);
-        kLatitude = Double(userLocation.coordinate.latitude);
         centerMapOnLocation(location: locationManager.location!)
     }
     
-    let regionRadius: CLLocationDistance = 1000
+    public var regionRadius: CLLocationDistance = 500
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
+                                                                  regionRadius, regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
     }
 
@@ -54,8 +51,6 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBOutlet weak var stopBtn: UIButton!
     
     @IBAction func onClickStopBtn(_ sender: UIButton) {
         
