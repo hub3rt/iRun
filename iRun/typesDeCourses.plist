@@ -8,5 +8,11 @@
 		<string>course</string>
 		<string>marche</string>
 	</array>
+	<key>zoom</key>
+	<array>
+		<integer>500</integer>
+		<integer>250</integer>
+		<integer>200</integer>
+	</array>
 </dict>
 </plist>

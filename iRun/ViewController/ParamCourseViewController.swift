@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -36,6 +37,17 @@ class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerV
         return nil
     }
     
+    func retrieveZooms () -> Array<NSNumber>? {
+        if let path = Bundle.main.path(forResource: "typesDeCourses", ofType: "plist") {
+            if let dic = NSDictionary(contentsOfFile: path) as? [String: Any] {
+                if let zooms = dic["zoom"] as? Array<NSNumber> {
+                    return zooms
+                }
+            }
+        }
+        return nil
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -53,6 +65,9 @@ class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerV
             if let destination = segue.destination as? CourseViewController {
                 let voiceActive = sliderActivateVoice.isOn
                 let typeDeCourse = retrieveTypesDeCourse()![pickerView.selectedRow(inComponent: 0)]
+                let zoom = retrieveZooms()![pickerView.selectedRow(inComponent: 0)]
+                
+                destination.regionRadius = CLLocationDistance(zoom.intValue)
             }
         }
     }
