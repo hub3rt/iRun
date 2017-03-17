@@ -34,18 +34,18 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
     
     @IBAction func selectTemps(_ sender: Any) {
         if (askingTemps == false) {
+            askingTemps = true
+            askingDist = false
             draw()
         }
-        askingTemps = true
-        askingDist = false
     }
     
     @IBAction func selectDist(_ sender: Any) {
         if (askingDist == false) {
+            askingDist = true
+            askingTemps = false
             draw()
         }
-        askingDist = true
-        askingTemps = false
     }
     
     func draw () {
@@ -108,9 +108,9 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
             lineChartView.data = lineChartData
             
             lineChartView.xAxis.granularity = 1
-            lineChartView.xAxis.valueFormatter = DefaultAxisValueFormatter(block: { (index, _) -> String in
+            /*lineChartView.xAxis.valueFormatter = DefaultAxisValueFormatter(block: { (index, _) -> String in
                 return xValues[Int(index)]
-            })
+            })*/
         } else {
             lineChartView.data = nil
         }
