@@ -64,7 +64,6 @@ class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerV
         if (segue.identifier == "startRun") {
             if let destination = segue.destination as? CourseViewController {
                 let voiceActive = sliderActivateVoice.isOn
-                let typeDeCourse = retrieveTypesDeCourse()![pickerView.selectedRow(inComponent: 0)]
                 let zoom = retrieveZooms()![pickerView.selectedRow(inComponent: 0)]
                 
                 destination.regionRadius = CLLocationDistance(zoom.intValue)

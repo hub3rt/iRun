@@ -12,10 +12,11 @@ import CoreLocation
 
 class CourseViewController: ViewController, CLLocationManagerDelegate {
 
-    let pinLocation = MKPointAnnotation()
+    private let pinLocation = MKPointAnnotation()
     
     @IBOutlet weak var mapView: MKMapView!
-    let locationManager = CLLocationManager()
+    private let locationManager = CLLocationManager()
+    public var isVoiceActive = false
     
     override func viewDidLoad() {
 
