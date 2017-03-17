@@ -2,13 +2,18 @@ PODS:
   - Charts (3.0.1):
     - Charts/Core (= 3.0.1)
   - Charts/Core (3.0.1)
+  - PubNub (4.5.15):
+    - PubNub/Core (= 4.5.15)
+  - PubNub/Core (4.5.15)
 
 DEPENDENCIES:
   - Charts
+  - PubNub (~> 4.1)
 
 SPEC CHECKSUMS:
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
+  PubNub: 5080a9cb739435e1efe0b47a00fd45d1188b5150
 
-PODFILE CHECKSUM: c215e726a3b3877c5a38fde64b2247a6e77bf308
+PODFILE CHECKSUM: 08825fcbffeff62418995c3659a3f56e830540f7
 
 COCOAPODS: 1.2.0
