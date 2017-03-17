@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ParamCourseViewController: ViewController {
+class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    @IBOutlet weak var pickerView: UIPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,15 +22,28 @@ class ParamCourseViewController: ViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func retrieveTypesDeCourse () -> Array<String>? {
+        if let path = Bundle.main.path(forResource: "typesDeCourses", ofType: "plist") {
+            if let dic = NSDictionary(contentsOfFile: path) as? [String: Any] {
+                if let types = dic["typesDeCourse"] as? Array<String> {
+                    return types
+                }
+            }
+        }
+        return nil
     }
-    */
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return retrieveTypesDeCourse()!.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return retrieveTypesDeCourse()![row]
+    }
 
 }
