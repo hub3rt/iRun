@@ -67,6 +67,7 @@ class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerV
                 let zoom = retrieveZooms()![pickerView.selectedRow(inComponent: 0)]
                 
                 destination.regionRadius = CLLocationDistance(zoom.intValue)
+                destination.isVoiceActive = voiceActive
             }
         }
     }
