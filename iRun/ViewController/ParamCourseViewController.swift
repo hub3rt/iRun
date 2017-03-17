@@ -12,6 +12,8 @@ class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerV
 
     @IBOutlet weak var pickerView: UIPickerView!
     
+    @IBOutlet weak var sliderActivateVoice: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +46,15 @@ class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerV
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return retrieveTypesDeCourse()![row]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "startRun") {
+            if let destination = segue.destination as? CourseViewController {
+                let voiceActive = sliderActivateVoice.isOn
+                let typeDeCourse = retrieveTypesDeCourse()![pickerView.selectedRow(inComponent: 0)]
+            }
+        }
     }
 
 }
