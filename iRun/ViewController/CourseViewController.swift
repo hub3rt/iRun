@@ -17,6 +17,7 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     private let locationManager = CLLocationManager()
     public var isVoiceActive = false
+    private var locations:[CLLocationCoordinate2D] = []
     
     override func viewDidLoad() {
 
@@ -47,6 +48,12 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
                                                                   regionRadius, regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
         pinLocation.coordinate = location.coordinate
+        locations.append(location.coordinate)
+        
+        mapView.removeOverlays(mapView.overlays)
+        
+        let polyline = MKPolyline(coordinates: &locations, count: locations.count)
+        mapView?.add(polyline)
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,13 +65,13 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
         
         let alertController = UIAlertController(title: "Fin de course", message: "Voulez-vous arrêter votre course ?", preferredStyle: UIAlertControllerStyle.alert)
         
-        let cancelAction = UIAlertAction(title: "non", style: UIAlertActionStyle.cancel) {
+        let cancelAction = UIAlertAction(title: "Non", style: UIAlertActionStyle.cancel) {
             (result : UIAlertAction) -> Void in
             
         }
         
         // Replace UIAlertActionStyle.Default by UIAlertActionStyle.default
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+        let okAction = UIAlertAction(title: "Oui", style: UIAlertActionStyle.default) {
             (result : UIAlertAction) -> Void in
             
             self.performSegue(withIdentifier: "backToHome", sender: self)
