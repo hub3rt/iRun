@@ -10,10 +10,13 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CourseViewController: ViewController {
+class CourseViewController: ViewController, CLLocationManagerDelegate {
 
-    var kLongitude = 0.0;
-    var kLatitude = 0.0;
+    var kLongitude = 0.0
+    var kLatitude = 0.0
+    
+    @IBOutlet weak var mapView: MKMapView!
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
 
@@ -24,13 +27,15 @@ class CourseViewController: ViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startMonitoringSignificantLocationChanges()
         
-        
-        // Check if the user allowed authorization
-        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse		)
-        {
-            print(locationManager.location)
-            
-        }
+        mapView.centerCoordinate = CLLocationCoordinate2DMake(kLatitude, kLongitude)
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation:CLLocation = locations[0]
+        kLongitude = Double(userLocation.coordinate.longitude);
+        kLatitude = Double(userLocation.coordinate.latitude);
+        mapView.centerCoordinate = CLLocationCoordinate2DMake(kLatitude, kLongitude)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,12 +66,4 @@ class CourseViewController: ViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    @IBOutlet weak var mapView: MKMapView!
-    let locationManager = CLLocationManager();
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation:CLLocation = locations[0]
-        kLongitude = Double(userLocation.coordinate.longitude);
-        kLatitude = Double(userLocation.coordinate.latitude);
-    }
 }
