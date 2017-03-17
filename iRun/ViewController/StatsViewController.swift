@@ -10,11 +10,13 @@ import UIKit
 import CoreData
 import Charts
 
-class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource, IAxisValueFormatter {
     
     private var askingDist = false, askingTemps = true
     
     private var courses: NSSet?
+    
+    private var xValues: [String] = []
     
     @IBOutlet weak var tempsLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -85,7 +87,7 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
         vitesseLabel.text = "\(kmh),\(mh < 10 ? "0\(mh)" : String(mh)) km/h"
         
         var dataEntries: [ChartDataEntry] = []
-        var xValues: [String] = []
+        xValues = []
         
         if (courses!.count != 0) {
             var cpt = 0;
@@ -106,11 +108,9 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
             let lineChartData = LineChartData(dataSet: lineChartDataSet)
             
             lineChartView.data = lineChartData
-            
+            lineChartView.xAxis.labelPosition = .bottom
             lineChartView.xAxis.granularity = 1
-            /*lineChartView.xAxis.valueFormatter = DefaultAxisValueFormatter(block: { (index, _) -> String in
-                return xValues[Int(index)]
-            })*/
+            lineChartView.xAxis.valueFormatter = self
         } else {
             lineChartView.data = nil
         }
@@ -162,6 +162,14 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
         courses = retrieveCoursesFor(_typeDeCourse: retrieveTypesDeCourse()![row])
         
         draw()
+    }
+    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        if (value != -1 && Int(value) < xValues.count) {
+            return xValues[Int(value)]
+        } else {
+            return ""
+        }
     }
 
 }
