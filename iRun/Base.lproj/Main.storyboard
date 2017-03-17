@@ -190,7 +190,6 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSt-8b-kxe" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="168" width="339" height="317"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUT-dn-SH5">
@@ -488,7 +487,6 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="0Mf-LA-NKv" id="dLV-sw-LDs"/>
-                        <outlet property="stopBtn" destination="lWY-Lt-KgS" id="IFd-dW-XGn"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="backToHome" id="11H-gs-QmO"/>
                     </connections>
                 </viewController>
