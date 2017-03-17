@@ -12,8 +12,7 @@ import CoreLocation
 
 class CourseViewController: ViewController, CLLocationManagerDelegate {
 
-    var kLongitude = 0.0
-    var kLatitude = 0.0
+    let pinLocation = MKPointAnnotation()
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
@@ -32,6 +31,7 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
         if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways		)
         {
             centerMapOnLocation(location: locationManager.location!)
+            mapView.addAnnotation(pinLocation)
         }
     }
     
@@ -45,6 +45,7 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
                                                                   regionRadius, regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
+        pinLocation.coordinate = location.coordinate
     }
 
     override func didReceiveMemoryWarning() {
