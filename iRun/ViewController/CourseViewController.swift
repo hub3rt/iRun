@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class CourseViewController: ViewController, CLLocationManagerDelegate {
+class CourseViewController: ViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     private let pinLocation = MKPointAnnotation()
     
@@ -23,6 +23,7 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
 
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        mapView.delegate = self
         locationManager.delegate = 	self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
@@ -53,7 +54,7 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
         mapView.removeOverlays(mapView.overlays)
         
         let polyline = MKPolyline(coordinates: &locations, count: locations.count)
-        mapView?.add(polyline)
+        mapView.add(polyline)
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,6 +81,16 @@ class CourseViewController: ViewController, CLLocationManagerDelegate {
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolyline {
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.blue
+            polylineRenderer.lineWidth = 5
+            return polylineRenderer
+        }
+        return MKPolylineRenderer()
     }
     
 }
