@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Charts
 
 class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -19,30 +20,32 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var vitesseLabel: UILabel!
     
-    @IBOutlet weak var statsView: UIView!
+    @IBOutlet weak var lineChartView: LineChartView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         courses = retrieveCoursesFor(_typeDeCourse: retrieveTypesDeCourse()![0])
         
+        lineChartView.noDataText = "Aucune donnée trouvée pour ce type de course"
+        
         draw()
     }
     
     @IBAction func selectTemps(_ sender: Any) {
         if (askingTemps == false) {
+            askingTemps = true
+            askingDist = false
             draw()
         }
-        askingTemps = true
-        askingDist = false
     }
     
     @IBAction func selectDist(_ sender: Any) {
         if (askingDist == false) {
+            askingDist = true
+            askingTemps = false
             draw()
         }
-        askingDist = true
-        askingTemps = false
     }
     
     func draw () {
@@ -80,6 +83,37 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
         let mh = Int((vitesse - Double(kmh)) * 100.0)
         
         vitesseLabel.text = "\(kmh),\(mh < 10 ? "0\(mh)" : String(mh)) km/h"
+        
+        var dataEntries: [ChartDataEntry] = []
+        var xValues: [String] = []
+        
+        if (courses!.count != 0) {
+            var cpt = 0;
+            
+            for _c in courses! {
+                if let course = _c as? Course {
+                    let dataEntry = ChartDataEntry(x: Double(cpt), y: askingDist ? course.distance!.doubleValue : course.duree!.doubleValue)
+                    dataEntries.append(dataEntry)
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd-MM-yyyy"
+                    dateFormatter.dateStyle = DateFormatter.Style.medium
+                    xValues.append(dateFormatter.string(from: course.date! as Date))
+                    cpt += 1;
+                }
+            }
+            
+            let lineChartDataSet = LineChartDataSet(values: dataEntries, label: askingDist ? "distance" : "temps")
+            let lineChartData = LineChartData(dataSet: lineChartDataSet)
+            
+            lineChartView.data = lineChartData
+            
+            lineChartView.xAxis.granularity = 1
+            /*lineChartView.xAxis.valueFormatter = DefaultAxisValueFormatter(block: { (index, _) -> String in
+                return xValues[Int(index)]
+            })*/
+        } else {
+            lineChartView.data = nil
+        }
     }
     
     func getContext () -> NSManagedObjectContext {

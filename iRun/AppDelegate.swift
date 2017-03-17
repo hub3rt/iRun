@@ -99,9 +99,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let context = getContext()
         
         let fetchRequest: NSFetchRequest<TypeDeCourse> = TypeDeCourse.fetchRequest()
+        let fetchReqToDel: NSFetchRequest<Course> = Course.fetchRequest()
         
         do {
             let result = try getContext().fetch(fetchRequest)
+            let resultToDel = try getContext().fetch(fetchReqToDel)
             
             if let path = Bundle.main.path(forResource: "typesDeCourses", ofType: "plist") {
                 if let dic = NSDictionary(contentsOfFile: path) as? [String: Any] {
@@ -111,9 +113,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             context.delete(object)
                         }
                         
+                        for object in resultToDel {
+                            context.delete(object)
+                        }
+                        
                         for typeDeCourse : String in types {
                             let newTypeDeCourse = TypeDeCourse(context: context)
                             newTypeDeCourse.nom = typeDeCourse
+                            let course = Course(context: context)
+                            course.date = NSDate()
+                            course.duree = 1.0000
+                            course.distance = 1.12
+                            course.vitesse = Decimal(course.distance!.doubleValue / course.duree!.doubleValue) as NSDecimalNumber
+                            course.type = newTypeDeCourse
                         }
                         
                         do {

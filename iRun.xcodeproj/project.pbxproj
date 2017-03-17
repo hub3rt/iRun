@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84EF5B34C8D2D7EF4EE8C602 /* Pods_iRun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBB5E6827DC671F0BA9699F /* Pods_iRun.framework */; };
 		8B85D82E1E7ACEC100795E25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B85D82D1E7ACEC100795E25 /* AppDelegate.swift */; };
 		8B85D8301E7ACEC100795E25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B85D82F1E7ACEC100795E25 /* ViewController.swift */; };
 		8B85D8331E7ACEC200795E25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B85D8311E7ACEC200795E25 /* Main.storyboard */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55E1B1C57225DDE0F9FA6BCA /* Pods-iRun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iRun.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iRun/Pods-iRun.debug.xcconfig"; sourceTree = "<group>"; };
+		8B3F88C9547A6BAE21F829E7 /* Pods-iRun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iRun.release.xcconfig"; path = "Pods/Target Support Files/Pods-iRun/Pods-iRun.release.xcconfig"; sourceTree = "<group>"; };
 		8B85D82A1E7ACEC100795E25 /* iRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B85D82D1E7ACEC100795E25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B85D82F1E7ACEC100795E25 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +38,7 @@
 		8B85D8471E7AE4F400795E25 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatsViewController.swift; path = ViewController/StatsViewController.swift; sourceTree = "<group>"; };
 		8B85D8491E7AE51500795E25 /* ParamCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParamCourseViewController.swift; path = ViewController/ParamCourseViewController.swift; sourceTree = "<group>"; };
 		8B85D84B1E7AE52400795E25 /* CourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseViewController.swift; path = ViewController/CourseViewController.swift; sourceTree = "<group>"; };
+		CDBB5E6827DC671F0BA9699F /* Pods_iRun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iRun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F414DFE31E7AEEE2003C689A /* typesDeCourses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = typesDeCourses.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B85D8441E7AD5AD00795E25 /* MapKit.framework in Frameworks */,
+				84EF5B34C8D2D7EF4EE8C602 /* Pods_iRun.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +61,7 @@
 				8B85D82C1E7ACEC100795E25 /* iRun */,
 				8B85D82B1E7ACEC100795E25 /* Products */,
 				8B85D8421E7AD5AD00795E25 /* Frameworks */,
+				AC73D9DF8A1C437107D74D23 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,8 +96,18 @@
 			isa = PBXGroup;
 			children = (
 				8B85D8431E7AD5AD00795E25 /* MapKit.framework */,
+				CDBB5E6827DC671F0BA9699F /* Pods_iRun.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC73D9DF8A1C437107D74D23 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				55E1B1C57225DDE0F9FA6BCA /* Pods-iRun.debug.xcconfig */,
+				8B3F88C9547A6BAE21F829E7 /* Pods-iRun.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,9 +117,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B85D83F1E7ACEC200795E25 /* Build configuration list for PBXNativeTarget "iRun" */;
 			buildPhases = (
+				408A03738CD27FC5F0B1547E /* [CP] Check Pods Manifest.lock */,
 				8B85D8261E7ACEC100795E25 /* Sources */,
 				8B85D8271E7ACEC100795E25 /* Frameworks */,
 				8B85D8281E7ACEC100795E25 /* Resources */,
+				E867CF69C61B87E950C5A334 /* [CP] Embed Pods Frameworks */,
+				01C26961530184CF8347F069 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -166,6 +185,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01C26961530184CF8347F069 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iRun/Pods-iRun-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		408A03738CD27FC5F0B1547E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E867CF69C61B87E950C5A334 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iRun/Pods-iRun-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8B85D8261E7ACEC100795E25 /* Sources */ = {
@@ -301,6 +368,7 @@
 		};
 		8B85D8401E7ACEC200795E25 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55E1B1C57225DDE0F9FA6BCA /* Pods-iRun.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = iRun/Info.plist;
@@ -313,6 +381,7 @@
 		};
 		8B85D8411E7ACEC200795E25 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B3F88C9547A6BAE21F829E7 /* Pods-iRun.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = iRun/Info.plist;
