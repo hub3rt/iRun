@@ -13,6 +13,8 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
     
     private var askingDist = false, askingTemps = true
     
+    private var courses: NSSet?
+    
     @IBOutlet weak var tempsLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var vitesseLabel: UILabel!
@@ -22,9 +24,7 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let courses = retrieveCoursesFor(_typeDeCourse: retrieveTypesDeCourse()![0])
-        
-        print("\(courses!.count)")
+        courses = retrieveCoursesFor(_typeDeCourse: retrieveTypesDeCourse()![0])
         
         draw()
     }
@@ -46,7 +46,42 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func draw () {
-        print("Draw")
+        var temps = 0.0000
+        var distance = 0.0
+        var vitesse = 0.0
+        
+        for _c in courses! {
+            if let course = _c as? Course {
+                temps += course.duree!.doubleValue
+                distance += course.distance!.doubleValue
+                vitesse += course.vitesse!.doubleValue
+            }
+        }
+        
+        if (courses!.count != 0)
+        {
+            temps = temps / Double(courses!.count)
+            distance = distance / Double(courses!.count)
+            vitesse = vitesse / Double(courses!.count)
+        }
+        
+        let heures = Int(temps)
+        let minutes = Int((temps - Double(heures)) * 100.0)
+        let secondes = Int((((temps - Double(heures)) * 100.0) - Double(minutes)) * 100.0)
+        
+        tempsLabel.text = "\(heures < 10 ? "0\(heures)" : String(heures)):\(minutes < 10 ? "0\(minutes)" : String(minutes)):\(secondes < 10 ? "0\(secondes)" : String(secondes))"
+        
+        let km = Int(distance)
+        let m = Int((distance - Double(km)) * 100.0)
+        
+        distanceLabel.text = "\(km),\(m < 10 ? "0\(m)" : String(m)) km"
+        
+        let kmh = Int(vitesse)
+        let mh = Int((vitesse - Double(kmh)) * 100.0)
+        
+        vitesseLabel.text = "\(kmh),\(mh < 10 ? "0\(mh)" : String(mh)) km/h"
+        
+        print("\(courses!.count)")
     }
     
     func getContext () -> NSManagedObjectContext {
@@ -92,9 +127,9 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let courses = retrieveCoursesFor(_typeDeCourse: retrieveTypesDeCourse()![row])
+        courses = retrieveCoursesFor(_typeDeCourse: retrieveTypesDeCourse()![row])
         
-        print("\(courses!.count)")
+        draw()
     }
 
 }
