@@ -112,7 +112,8 @@ class StatsViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
             lineChartView.xAxis.granularity = 1
             lineChartView.xAxis.valueFormatter = self
         } else {
-            lineChartView.data = nil
+            let lineChartData = LineChartData()
+            lineChartView.data = lineChartData
         }
     }
     
