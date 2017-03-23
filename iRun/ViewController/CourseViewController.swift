@@ -19,6 +19,10 @@ class CourseViewController: ViewController, CLLocationManagerDelegate, MKMapView
     public var isVoiceActive = false
     private var locations:[CLLocationCoordinate2D] = []
     
+    private var distance = 0.0
+    private var temps = 0.0000
+    
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -29,9 +33,10 @@ class CourseViewController: ViewController, CLLocationManagerDelegate, MKMapView
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
+        locations = []
         
         // Check if the user allowed authorization
-        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways		)
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways)
         {
             centerMapOnLocation(location: locationManager.location!)
             mapView.addAnnotation(pinLocation)
@@ -91,6 +96,10 @@ class CourseViewController: ViewController, CLLocationManagerDelegate, MKMapView
             return polylineRenderer
         }
         return MKPolylineRenderer()
+    }
+    
+    func update() {
+        
     }
     
 }
