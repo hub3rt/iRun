@@ -117,9 +117,7 @@ class CourseViewController: ViewController, CLLocationManagerDelegate, MKMapView
         
         chronoLabel.text = "\(heures < 10 ? "0\(heures)" : String(heures)):\(minutes < 10 ? "0\(minutes)" : String(minutes)):\(secondes < 10 ? "0\(secondes)" : String(secondes))"
         
-        let isInteger = floor(distance) == distance
-        
-        if (isInteger)
+        if (minutes % 2 == 0)
         {
             let utterance = AVSpeechUtterance(string: distanceLabel.text!)
             utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
