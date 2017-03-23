@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 import CoreLocation
+import AVFoundation
 
 class CourseViewController: ViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -63,6 +64,8 @@ class CourseViewController: ViewController, CLLocationManagerDelegate, MKMapView
         
         timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(CourseViewController.update), userInfo: nil, repeats: true)
         
+        
+        
     }
     
     
@@ -113,6 +116,17 @@ class CourseViewController: ViewController, CLLocationManagerDelegate, MKMapView
         }
         
         chronoLabel.text = "\(heures < 10 ? "0\(heures)" : String(heures)):\(minutes < 10 ? "0\(minutes)" : String(minutes)):\(secondes < 10 ? "0\(secondes)" : String(secondes))"
+        
+        let isInteger = floor(distance) == distance
+        
+        if (isInteger)
+        {
+            let utterance = AVSpeechUtterance(string: distanceLabel.text!)
+            utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
+        
+            let synthesizer = AVSpeechSynthesizer()
+            synthesizer.speak(utterance)
+        }
     }
     
     override func didReceiveMemoryWarning() {
