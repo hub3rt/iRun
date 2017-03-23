@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import CoreLocation
 
 class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -27,12 +28,15 @@ class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func retrieveTypesDeCourse () -> Array<String>? {
-        if let path = Bundle.main.path(forResource: "typesDeCourses", ofType: "plist") {
-            if let dic = NSDictionary(contentsOfFile: path) as? [String: Any] {
-                if let types = dic["typesDeCourse"] as? Array<String> {
-                    return types
-                }
+        let types = fetchTypeDeCourse()
+        
+        if (types != nil && types!.count > 0)
+        {
+            var result: Array<String> = []
+            for type in types! {
+                result.append(type.nom!)
             }
+            return result
         }
         return nil
     }
@@ -44,6 +48,18 @@ class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerV
                     return zooms
                 }
             }
+        }
+        return nil
+    }
+    
+    func fetchTypeDeCourse () -> Array<TypeDeCourse>? {
+        let fetchRequest: NSFetchRequest<TypeDeCourse> = TypeDeCourse.fetchRequest()
+        
+        do {
+            let result = try getContext().fetch(fetchRequest)
+            return result
+        } catch {
+            print("Error with request: \(error)")
         }
         return nil
     }
@@ -60,14 +76,21 @@ class ParamCourseViewController: ViewController, UIPickerViewDelegate, UIPickerV
         return retrieveTypesDeCourse()![row]
     }
     
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "startRun") {
             if let destination = segue.destination as? CourseViewController {
                 let voiceActive = sliderActivateVoice.isOn
                 let zoom = retrieveZooms()![pickerView.selectedRow(inComponent: 0)]
+                let type = fetchTypeDeCourse()![pickerView.selectedRow(inComponent: 0)]
                 
                 destination.regionRadius = CLLocationDistance(zoom.intValue)
                 destination.isVoiceActive = voiceActive
+                destination.typeDeRun = type
             }
         }
     }
