@@ -20,6 +20,7 @@
 		8B85D84A1E7AE51500795E25 /* ParamCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B85D8491E7AE51500795E25 /* ParamCourseViewController.swift */; };
 		8B85D84C1E7AE52400795E25 /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B85D84B1E7AE52400795E25 /* CourseViewController.swift */; };
 		F414DFE41E7AEEE2003C689A /* typesDeCourses.plist in Resources */ = {isa = PBXBuildFile; fileRef = F414DFE31E7AEEE2003C689A /* typesDeCourses.plist */; };
+		F4A0BB391E840B4300AFCA69 /* pastedImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A0BB381E840B4300AFCA69 /* pastedImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		8B85D84B1E7AE52400795E25 /* CourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseViewController.swift; path = ViewController/CourseViewController.swift; sourceTree = "<group>"; };
 		CDBB5E6827DC671F0BA9699F /* Pods_iRun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iRun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F414DFE31E7AEEE2003C689A /* typesDeCourses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = typesDeCourses.plist; sourceTree = "<group>"; };
+		F4A0BB381E840B4300AFCA69 /* pastedImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pastedImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				8B85D83C1E7ACEC200795E25 /* Info.plist */,
 				8B85D8341E7ACEC200795E25 /* iRun.xcdatamodeld */,
 				F414DFE31E7AEEE2003C689A /* typesDeCourses.plist */,
+				F4A0BB381E840B4300AFCA69 /* pastedImage.png */,
 			);
 			path = iRun;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F414DFE41E7AEEE2003C689A /* typesDeCourses.plist in Resources */,
+				F4A0BB391E840B4300AFCA69 /* pastedImage.png in Resources */,
 				8B85D83B1E7ACEC200795E25 /* LaunchScreen.storyboard in Resources */,
 				8B85D8381E7ACEC200795E25 /* Assets.xcassets in Resources */,
 				8B85D8331E7ACEC200795E25 /* Main.storyboard in Resources */,

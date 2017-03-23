@@ -22,22 +22,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="duG-Ha-6Ko">
-                                <rect key="frame" x="41" y="154" width="293" height="163"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="163" id="2Sr-Gu-9bb"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iRun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mQ-4d-qaT">
-                                <rect key="frame" x="107" y="70" width="161" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="161" id="udB-pq-j1C"/>
-                                    <constraint firstAttribute="height" constant="55" id="wpb-yT-xVN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name=".SFNSDisplay-Regular" family=".SF NS Display" pointSize="66"/>
-                                <color key="textColor" red="0.28286643096236608" green="0.53395152256243517" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fE1-Dh-yhT">
                                 <rect key="frame" x="126" y="528" width="123" height="58"/>
                                 <constraints>
@@ -62,20 +46,25 @@
                                     <segue destination="5F8-eb-SNf" kind="show" id="iOm-fi-jOY"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pastedImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="duG-Ha-6Ko">
+                                <rect key="frame" x="16" y="100" width="343" height="373"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="duG-Ha-6Ko" secondAttribute="trailing" constant="25" id="6FW-aa-1Vh"/>
-                            <constraint firstItem="duG-Ha-6Ko" firstAttribute="top" secondItem="1mQ-4d-qaT" secondAttribute="bottom" constant="29" id="X6q-uP-X27"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="duG-Ha-6Ko" secondAttribute="trailing" id="6FW-aa-1Vh"/>
                             <constraint firstItem="fE1-Dh-yhT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eAh-Ig-6oF"/>
                             <constraint firstItem="ZGM-Ld-zm0" firstAttribute="top" secondItem="fE1-Dh-yhT" secondAttribute="bottom" constant="1" id="fG6-os-Mb9"/>
+                            <constraint firstItem="duG-Ha-6Ko" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="gIw-T7-VLt"/>
+                            <constraint firstItem="fE1-Dh-yhT" firstAttribute="top" secondItem="duG-Ha-6Ko" secondAttribute="bottom" constant="55" id="geO-gA-dOb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZGM-Ld-zm0" secondAttribute="bottom" constant="20" id="hq2-jY-hbb"/>
                             <constraint firstItem="ZGM-Ld-zm0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k7L-ZR-bUK"/>
-                            <constraint firstItem="duG-Ha-6Ko" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="25" id="qgc-qh-VCI"/>
-                            <constraint firstItem="1mQ-4d-qaT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="s1l-fI-9Je"/>
-                            <constraint firstItem="1mQ-4d-qaT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="tek-Pg-57k"/>
+                            <constraint firstItem="duG-Ha-6Ko" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qgc-qh-VCI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="duG-Ha-6Ko" id="3Bq-c5-vwO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -539,6 +528,9 @@
             <point key="canvasLocation" x="1925.5999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pastedImage.png" width="900" height="637"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="11H-gs-QmO"/>
     </inferredMetricsTieBreakers>

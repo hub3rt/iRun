@@ -10,10 +10,14 @@ import UIKit
 
 class AccueilViewController: ViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        imageView.layer.cornerRadius = 50.0
+        imageView.layer.masksToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
